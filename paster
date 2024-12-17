@@ -7,7 +7,7 @@ if (not LPH_OBFUSCATED) then
     LPH_JIT_ULTRA = function(...) return (...) end;
 end
 
-getgenv().secretpaste+ = {
+getgenv().KingVon = {
     ["Aimbot"] = {
         ["Enabled"] = false,
         ["Future"] = 0.1,
@@ -77,7 +77,7 @@ local aaaa = {
     ShowDistance = false,
 }
 Script = {
-    Table = getgenv().secretpaste+,
+    Table = getgenv().KingVon,
     Target = nil,
     MainEvent = nil,
     Argument = "",
@@ -85,7 +85,7 @@ Script = {
     Connections = {},
     Tool = nil
 }
-Script.Table = getgenv().secretpaste+
+Script.Table = getgenv().KingVon
 local function PlayThatBitch()
         local playerGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
@@ -174,7 +174,7 @@ txt.Position = UDim2.new(0.5, 0, 0.5, 0)
 txt.AnchorPoint = Vector2.new(0.5, 0.5)
 txt.BackgroundTransparency = 1
 txt.Text = "UI"
-txt.Font = Enum.Font.SourceSans
+txt.Font = Enum.Font.Arcade
 txt.TextColor3 = Color3.fromRGB(255, 255, 255)
 txt.TextScaled = true
 txt.Parent = frm
@@ -266,15 +266,15 @@ local Camera = Workspace.CurrentCamera
 
 
 local Circle = Drawing.new("Circle")
-Circle.Radius = getgenv().secretpaste+["Visuals"]["Circle"]["Radius"]
+Circle.Radius = getgenv().KingVon["Visuals"]["Circle"]["Radius"]
 Circle.Filled = false
-Circle.Color = getgenv().secretpaste+["Visuals"]["Circle"]["Color"]
-Circle.Thickness = getgenv().secretpaste+["Visuals"]["Circle"]["Thickness"]
+Circle.Color = getgenv().KingVon["Visuals"]["Circle"]["Color"]
+Circle.Thickness = getgenv().KingVon["Visuals"]["Circle"]["Thickness"]
 Circle.Visible = false
 
 local Tracer = Drawing.new("Line")
-Tracer.Color = getgenv().secretpaste+["Visuals"]["Tracer"]["Color"]
-Tracer.Thickness = getgenv().secretpaste+["Visuals"]["Tracer"]["Thickness"]
+Tracer.Color = getgenv().KingVon["Visuals"]["Tracer"]["Color"]
+Tracer.Thickness = getgenv().KingVon["Visuals"]["Tracer"]["Thickness"]
 Tracer.Visible = false
 
 Script.Connections.CircleLoop = RunService.RenderStepped:Connect(LPH_NO_VIRTUALIZE(function(s)
@@ -286,16 +286,16 @@ Script.Connections.CircleLoop = RunService.RenderStepped:Connect(LPH_NO_VIRTUALI
             local screenCenter = Vector2.new(game:GetService("Workspace").CurrentCamera.ViewportSize.X / 2, game:GetService("Workspace").CurrentCamera.ViewportSize.Y / 2)
 
             Circle.Position = Vector2.new(PartPos.X, PartPos.Y)
-            Circle.Visible = getgenv().secretpaste+["Visuals"]["Circle"]["Enabled"] and OnScreen
+            Circle.Visible = getgenv().KingVon["Visuals"]["Circle"]["Enabled"] and OnScreen
 
             local tracerStart = mousePos
-            if getgenv().secretpaste+["Visuals"]["Tracer"]["StartPosition"] == "Center" then
+            if getgenv().KingVon["Visuals"]["Tracer"]["StartPosition"] == "Center" then
                 tracerStart = screenCenter
             end
 
             Tracer.From = tracerStart
             Tracer.To = Circle.Position
-            Tracer.Visible = getgenv().secretpaste+["Visuals"]["Tracer"]["Enabled"] and OnScreen
+            Tracer.Visible = getgenv().KingVon["Visuals"]["Tracer"]["Enabled"] and OnScreen
         else
             Circle.Visible = false
             Tracer.Visible = false
@@ -344,7 +344,7 @@ Script.Argument = Arguments()
 
 
 local Box = nil
-if secretpaste+.Visuals.Box.Enabled then
+if KingVon.Visuals.Box.Enabled then
     Box = Instance.new("Part")
     Box.Anchored = true
     Box.Name = "do you like black men?"
@@ -360,7 +360,7 @@ end
 Script.Connections = Script.Connections or {} 
 
 Script.Connections.BoxLoop = RunService.Heartbeat:Connect(function(Delta)
-    if Script.Target and Script.Target.Character and secretpaste+["Visuals"].Box.Enabled then
+    if Script.Target and Script.Target.Character and KingVon["Visuals"].Box.Enabled then
         Box.Position = Script.Target.Character.HumanoidRootPart.Position
     end
 end)
@@ -408,7 +408,7 @@ end
 
 Script.Connections.InputBeganConnection = UserInputService.InputBegan:Connect(function(Input, gameProccessedEvent)
     if gameProccessedEvent then return end
-    if Input.KeyCode == secretpaste+["Aimbot"].Keybind and secretpaste+["Aimbot"].Enabled then
+    if Input.KeyCode == KingVon["Aimbot"].Keybind and KingVon["Aimbot"].Enabled then
         Script.Target = Script.Target and nil or Script.Functions.GetClosest()
     end
 end)
@@ -494,7 +494,7 @@ local AutoAirActivated = false
 local AutoAirStartTime = 0
 
 local function AutoAir()
-    if secretpaste+["Random"].AutoAir and Script.Target and Script.Target.Character then
+    if KingVon["Random"].AutoAir and Script.Target and Script.Target.Character then
         local humanoid = Script.Target.Character:FindFirstChild("Humanoid")
         if humanoid then
             local isInAir = humanoid:GetState() == Enum.HumanoidStateType.Freefall
@@ -505,7 +505,7 @@ local function AutoAir()
                     AutoAirActivated = true
                 end
 
-                if tick() - AutoAirStartTime >= secretpaste+["Random"].AutoAirDelay then
+                if tick() - AutoAirStartTime >= KingVon["Random"].AutoAirDelay then
                     local tool = Client.Character:FindFirstChildOfClass("Tool")
                     if tool and tool:IsA("Tool") then
                         tool:Activate()
@@ -741,8 +741,8 @@ local Window = Library:CreateWindow({
 })
 local Tabs = {
     Main = Window:AddTab('Rage'),
-    visuals = Window:AddTab('Visuals'),
-    misc = Window:AddTab('Toggles'),
+    visuals = Window:AddTab('Visualize ')'),
+    misc = Window:AddTab('FUN'),
     ['UI Settings'] = Window:AddTab('settings')
     
 }
@@ -754,7 +754,7 @@ local esp = Tabs.visuals:AddLeftGroupbox('ESP')
 local selfvis = Tabs.visuals:AddLeftGroupbox('Self visuals')
 local world = Tabs.visuals:AddRightGroupbox('World')
 local csr = Tabs.visuals:AddRightGroupbox('Crosshair')
-local utilities = Tabs.misc:AddLeftGroupbox('Cframe')
+local utilities = Tabs.misc:AddLeftGroupbox('C-Sync')
 local autoair = Tabs.misc:AddRightGroupbox('Auto Air')
 local hcswitch = Tabs.misc:AddRightGroupbox('Rapid Fire')
 
@@ -777,8 +777,8 @@ aimbot:AddInput('PredictionBox', {
     Tooltip = nil, 
     Placeholder = 'Enter prediction here', 
 
-    Callback = function(nigger)
-        Script.Table["Aimbot"].Future = nigger
+    Callback = function(nau)
+        Script.Table["Aimbot"].Future = nau
     end
 })
 aimbot:AddDropdown('hitparts', {
@@ -1011,33 +1011,33 @@ TargetVis:AddToggle('circle', {
     Tooltip = nil,
 
     Callback = function(Value)
-        secretpaste+.Visuals.Circle.Enabled = Value
+        KingVon.Visuals.Circle.Enabled = Value
     end
 })
 
 
 TargetVis:AddSlider('CircleRadius', {
     Text = 'Circle Radius',
-    Default = getgenv().secretpaste+["Visuals"]["Circle"]["Radius"],
+    Default = getgenv().KingVon["Visuals"]["Circle"]["Radius"],
     Min = 0,
     Max = 50,
     Rounding = 1,
     Compact = false,
     Callback = function(Value)
-        getgenv().secretpaste+["Visuals"]["Circle"]["Radius"] = Value
+        getgenv().KingVon["Visuals"]["Circle"]["Radius"] = Value
         Circle.Radius = Value
     end
 })
 
 TargetVis:AddSlider('CircleThickness', {
     Text = 'Circle Thickness',
-    Default = getgenv().secretpaste+["Visuals"]["Circle"]["Thickness"],
+    Default = getgenv().KingVon["Visuals"]["Circle"]["Thickness"],
     Min = 0,
     Max = 10,
     Rounding = 1,
     Compact = false,
     Callback = function(Value)
-        getgenv().secretpaste+["Visuals"]["Circle"]["Thickness"] = Value
+        getgenv().KingVon["Visuals"]["Circle"]["Thickness"] = Value
         Circle.Thickness = Value
     end
 })
@@ -1047,18 +1047,18 @@ TargetVis:AddToggle('tracer', {
     Tooltip = nil,
 
     Callback = function(Value)
-        secretpaste+.Visuals.Tracer.Enabled = Value
+        KingVon.Visuals.Tracer.Enabled = Value
     end
 })
 TargetVis:AddSlider('TracerThickness', {
     Text = 'Tracer Thickness',
-    Default = getgenv().secretpaste+["Visuals"]["Tracer"]["Thickness"],
+    Default = getgenv().KingVon["Visuals"]["Tracer"]["Thickness"],
     Min = 0,
     Max = 10,
     Rounding = 1,
     Compact = false,
     Callback = function(Value)
-        getgenv().secretpaste+["Visuals"]["Tracer"]["Thickness"] = Value
+        getgenv().KingVon["Visuals"]["Tracer"]["Thickness"] = Value
         Tracer.Thickness = Value
     end
 })
@@ -1067,19 +1067,19 @@ TargetVis:AddSlider('TracerThickness', {
 
 TargetVis:AddDropdown('PositionTracer', {
     Values = { 'Mouse', 'Center' },
-    Default = (secretpaste+.Visuals.Tracer.StartPosition == "Center" and 2 or 1),
+    Default = (KingVon.Visuals.Tracer.StartPosition == "Center" and 2 or 1),
     Multi = false, 
     Text = 'Tracer position',
     Tooltip = nil,
     Callback = function(Value)
-        secretpaste+.Visuals.Tracer.StartPosition = Value == "Center" and "Center" or "Mouse"
+        KingVon.Visuals.Tracer.StartPosition = Value == "Center" and "Center" or "Mouse"
     end
 })
 TargetVis:AddLabel('CircleColor'):AddColorPicker('CircleColorPicker', {
     Default = Color3.new(255, 255, 255),
     Title = 'Circle Color',
     Callback = function(Value)
-        getgenv().secretpaste+["Visuals"]["Circle"]["Color"] = Value
+        getgenv().KingVon["Visuals"]["Circle"]["Color"] = Value
         Circle.Color = Value
     end
 })
@@ -1088,7 +1088,7 @@ TargetVis:AddLabel('TracerColor'):AddColorPicker('TracerColorPicker', {
     Default = Color3.new(255, 255, 255),
     Title = 'Tracer Color',
     Callback = function(Value)
-        getgenv().secretpaste+["Visuals"]["Tracer"]["Color"] = Value
+        getgenv().KingVon["Visuals"]["Tracer"]["Color"] = Value
         Tracer.Color = Value
     end
 })
@@ -1972,7 +1972,7 @@ autoair:AddToggle('autoair', {
     Tooltip = nil,
 
     Callback = function(Value)
-        secretpaste+.Random.AutoAir = Value
+        KingVon.Random.AutoAir = Value
     end
 })
 autoair:AddSlider('autoairdelay', {
@@ -1984,7 +1984,7 @@ autoair:AddSlider('autoairdelay', {
     Compact = false,
 
     Callback = function(Value)
-        secretpaste+.Random.AutoAirDelay = Value
+        KingVon.Random.AutoAirDelay = Value
             end
 })
 selfvis:AddToggle('forcefield', {
